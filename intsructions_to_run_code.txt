@@ -1,0 +1,10 @@
+Instructions to run the code
+
+Note:Make sure internet is connected for first time
+
+step1)unzip file and paste folder on desktop
+
+step2)click on run_only_first_time.bat once.(It will install all neccesary dependencies for project automatically)
+
+step3)click on run_always.bat (project figures will be displayed)
+

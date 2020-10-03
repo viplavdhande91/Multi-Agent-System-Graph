@@ -1,0 +1,156 @@
+﻿
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<script
+      type="text/javascript"
+      src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"
+    ></script>
+
+
+<div id="mynetwork"></div>
+  <h3><center> Fig. 4 The Ex-MASAG of the Student Enrolment </center></h3>
+
+
+<script type="text/javascript">
+
+// create an array with nodes
+nodes = [
+  { id: 1, label: "E1" ,shape: "ellipse",font: { size: 30 },},
+
+  { id: 2, label: "E2" ,shape: "ellipse",font: { size: 30 },},
+
+  { id: 3, label: "E3",shape: "ellipse" ,font: { size: 30 },},
+
+  { id: 4, label: "E4" ,shape: "ellipse",font: { size: 30 },},
+
+  { id: 5, label: "E5",shape: "ellipse",font: { size: 30 }, },
+
+  { id: 6, label: "E6" ,shape: "ellipse",font: { size: 30 },},
+
+
+
+  {
+    id: 7,
+    label: "STUDENT AGENT (SA)",
+    font: { face: "Monospace", align: "left" },
+    shape: "box",
+    font: { size: 50 },
+   //  fixed: true,
+   // physics: false,
+
+  },
+
+  
+  {
+    id: 8,
+    label: "COLLEGE AGENT (CA)",
+    shape: "box",
+    font: { face: "Monospace", align: "left" },
+    font: { size: 50 }, 
+   // fixed: true,
+ //physics: false,
+  },
+
+
+     { id: 9, label: "C1",  shape: "diamond",    font: { size: 40 },},
+          { id: 10, label: "C2",  shape: "diamond",    font: { size: 40 },},
+
+     { id: 11, label: "C3",  shape: "diamond",    font: { size: 40 },},
+
+     { id: 12, label: "C4",  shape: "diamond",    font: { size: 40 },},
+
+     { id: 13, label: "C5",  shape: "diamond",    font: { size: 40 },},
+     { id: 14, label: "C6",  shape: "diamond",    font: { size: 40 },},
+     { id: 15, label: "C7",  shape: "diamond",    font: { size: 40 },},
+
+
+];
+
+// create an array with edges
+var edges = [
+
+{ from: 6, to: 7, label: "S13", font: { align: "middle" },arrows: "to",smooth: false,}, 
+{ from: 4, to: 7, label: "S9", font: { align: "middle" },arrows: "to",smooth: false,},
+{ from: 5, to: 7, label: "S11", font: { align: "middle" },arrows: "to",smooth: false,},
+{ from: 7, to: 12, dashes: [5, 5], label: "S5", font: { align: "middle" },arrows: "to",smooth: false,},
+{ from: 7, to: 9, dashes: [5, 5], label: "S1", font: { align: "middle" },arrows: "to",smooth: false,},
+{ from: 7, to: 2, label: "S3", font: { align: "middle" },arrows: "to",smooth: false,},
+
+
+
+{from: 12,to: 3, length: 50,width: 10,color: "red", smooth: false,},
+{from: 9,to: 1, length: 50,width: 10,color: "red", smooth: false,},
+
+
+
+
+{from: 1,to: 10, length: 50,width: 10,color: "red", smooth: false,},
+{from: 2,to: 11, length: 50,width: 10,color: "red", smooth: false,},
+{ from: 3, to: 8, label: "S6", font: { align: "middle" },arrows: "to",smooth: false,},
+
+{from: 6,to: 14, length: 50,width: 10,color: "red", smooth: false,},
+
+{from: 4,to: 13, length: 50,width: 10,color: "red", smooth: false,},
+
+{from: 4,to: 15, length: 50,width: 10,color: "red", smooth: false,},
+
+
+
+{ from: 10, to: 8, dashes: [5, 5], label: "S2", font: { align: "middle" },arrows: "to",smooth: false,},
+
+{ from: 11, to: 8, dashes: [5, 5], label: "S4", font: { align: "middle" },arrows: "to",smooth: false,},
+
+
+
+
+{ from: 8, to: 14, dashes: [5, 5], label: "S12", font: { align: "middle" },arrows: "to",smooth: false,},
+
+{ from: 8, to: 13, dashes: [5, 5], label: "S7", font: { align: "middle" },arrows: "to",smooth: false,},
+{ from: 8, to: 15, dashes: [5, 5], label: "S8", font: { align: "middle" },arrows: "to",smooth: false,},
+{ from: 8, to: 5, label: "S10", font: { align: "middle" },arrows: "to",smooth: false,}, 
+
+
+];
+
+// create a network
+var container = document.getElementById("mynetwork");
+var data = {
+  nodes: nodes,
+  edges: edges,
+};
+var options = { physics: false };
+var network = new vis.Network(container, data, options);
+
+network.on("click", function (params) {
+  params.event = "[original event]";
+  document.getElementById("eventSpan").innerHTML =
+    "<h2>Click event:</h2>" + JSON.stringify(params, null, 4);
+});
+
+
+</script>
+
+
+
+
+
+
+<style type="text/css">
+  #mynetwork {
+  width:1200px;
+  height: 700px;
+  border: 1px solid lightgray;
+    margin: auto;
+
+}
+
+
+
+</style>
+
+
+  {% endblock %}

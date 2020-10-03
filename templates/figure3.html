@@ -1,0 +1,138 @@
+﻿
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<script
+      type="text/javascript"
+      src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"
+    ></script>
+
+
+<div id="mynetwork">
+
+</div>
+  <h3><center> Fig. 3. Formal diagram of Ex-AIG</center></h3>
+
+<script type="text/javascript">
+
+// create an array with nodes
+nodes = [
+  { id: 1, label: "E1" ,font: { size: 40 },},
+
+  { id: 2, label: "E2",font: { size: 40 }, },
+
+  { id: 3, label: "E3",font: { size: 40 }, },
+
+  { id: 4, label: "C1",  shape: "diamond", font: { size: 40 },},
+
+   { id: 5, label: "C2",  shape: "diamond",    font: { size: 40 },},
+  { id: 6, label: "C3",  shape: "diamond",    font: { size: 40 },},
+  { id: 7, label: "C4",  shape: "diamond",    font: { size: 40 },},
+  { id: 8, label: "C5",  shape: "diamond",    font: { size: 40 },},
+  { id: 9, label: "C6",  shape: "diamond",    font: { size: 40 },},
+  { id: 10, label: "C7",  shape: "diamond",    font: { size: 40 },},
+  { id: 11, label: "C8",  shape: "diamond",    font: { size: 40 },},
+
+
+  {
+    id: 12,
+    label: "A1",
+    font: { face: "Monospace", align: "left" },
+    shape: "box",
+    font: { size: 50 },
+   //  fixed: true,
+   // physics: false,
+
+  },
+
+  
+  {
+    id: 13,
+    label: "A2",
+    shape: "box",
+    font: { face: "Monospace", align: "left" },
+    font: { size: 50 }, 
+   // fixed: true,
+ //physics: false,
+  },
+];
+
+// create an array with edges
+var edges = [
+  { from: 12, to: 4, dashes: [5, 5], label: "S1", font: { align: "middle" },arrows: "to",smooth: false,},
+  { from: 12, to: 5, dashes: [5, 5], label: "S3", font: { align: "top" },arrows: "to",smooth: false, },
+  { from: 12, to: 6, dashes: [5, 5], label: "S6", font: { align: "horizontal" },arrows: "to",smooth: false,},
+  { from: 7, to: 12, dashes: [5, 5], label: "S19", font: { align: "middle" },arrows: "to",smooth: false,},
+  { from: 12, to: 2, label: "S7", font: { align: "middle" },arrows: "to",smooth: false,},
+
+
+
+
+{from: 1,to: 4, length: 50,width: 10,color: "red", smooth: false,},
+{from: 1,to: 5, length: 50,width: 10,color: "red", smooth: false,},
+{from: 1,to: 8, length: 50,width: 10,color: "red", smooth: false,},
+
+
+
+{from: 2,to: 4, length: 50,width: 10,color: "red", smooth: false,},
+{from: 2,to: 6, length: 50,width: 10,color: "red", smooth: false,},
+{from: 2,to: 9, length: 50,width: 10,color: "red", smooth: false,},
+
+
+{from: 3,to: 7, length: 50,width: 10,color: "red", smooth: false,},
+{from: 3,to: 10, length: 50,width: 10,color: "red", smooth: false,},
+{from: 3,to: 11, length: 50,width: 10,color: "red", smooth: false,},
+{ from: 3, to: 12, label: "S14", font: { align: "middle" },arrows: "to",smooth: false,},
+
+
+{ from: 8, to: 13, dashes: [5, 5], label: "S2", font: { align: "middle" },arrows: "to",smooth: false,},
+{ from: 1, to: 13, label: "S5", font: { align: "middle" },arrows: "to",smooth: false,},
+{ from: 9, to: 13, dashes: [5, 5], label: "S4", font: { align: "middle" },arrows: "to",smooth: false,},
+{ from: 2, to: 13, label: "S8", font: { align: "middle" },arrows: "to",smooth: false,},
+{ from: 13, to: 3, label: "S12,S13", font: { align: "middle" },arrows: "to",smooth: false,},
+{ from: 13, to: 10,dashes: [5, 5], label: "S10", font: { align: "middle" },arrows: "to",smooth: false,},
+{ from: 13, to: 11,dashes: [5, 5], label: "S11", font: { align: "middle" },arrows: "to",smooth: false,},
+
+];
+
+// create a network
+var container = document.getElementById("mynetwork");
+var data = {
+  nodes: nodes,
+  edges: edges,
+};
+var options = { physics: false, };
+var network = new vis.Network(container, data, options);
+
+
+
+
+network.on("click", function (params) {
+  params.event = "[original event]";
+  document.getElementById("eventSpan").innerHTML =
+    "<h2>Click event:</h2>" + JSON.stringify(params, null, 4);
+});
+
+
+</script>
+
+
+
+<style type="text/css">
+  #mynetwork {
+  width:1200px;
+  height: 700px;
+  border: 1px solid lightgray;
+    margin: auto;
+
+}
+
+
+
+</style>
+
+
+  {% endblock %}

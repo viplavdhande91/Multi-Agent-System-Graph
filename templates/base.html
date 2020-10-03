@@ -1,0 +1,70 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+
+  <title>MAS</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+ <!--  <a class="navbar-brand" href="#">Home</a> -->
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'figure1' %}">Figure 1</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'figure2' %}">Figure 2</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'figure3' %}">Figure 3</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'figure4' %}">Figure 4</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'figure5' %}">Figure 5</a>
+      </li>    
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'figure6' %}">Figure 6</a>
+      </li>
+    </ul>
+  </div>  
+</nav>
+<br>
+
+<div class="container">
+ <h1><center>Research Paper Title: Constraint Specification in Multi Agent System</center> </h1>
+    <p>The two graph semantic based components of MASAG are Agent Interaction Graph (AIG) and 
+    Agent Collaboration Graph(ACG)</p>
+</div>
+
+
+ 
+{% block content %}
+
+
+
+
+
+
+{% endblock %}
+
+</body>
+</html>
+
+

@@ -1,0 +1,127 @@
+﻿
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<script
+      type="text/javascript"
+      src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"
+    ></script>
+
+
+<div id="mynetwork"></div>
+
+
+  <h3><center> Fig. 2. AIG of Student Enrolment System</center></h3>
+
+<script type="text/javascript">
+
+
+function startNetwork(data) {
+  const container = document.getElementById("mynetwork");
+  const options = {};
+  new vis.Network(container, data, options);
+}
+
+/**
+ * In this example we do not mutate nodes or edges source data.
+ */
+ nodes = new vis.DataSet([
+  { id: 1, label: "STUDENT AGENT", shape: "box",shapeProperties: { borderDashes: [5, 5],font: { size: 100 }, fixed: true,
+    physics: false,},
+ },
+  { id: 2, label: "COLLEGE AGENT", shape: "box",      shapeProperties: { borderDashes: [5, 5],font: { size: 100 }, fixed: true,
+    physics: false,},
+},
+ 
+]);
+
+
+var edges = new vis.DataSet([
+  {
+    from: 1,
+    to: 2,
+    relation: "friend",
+    arrows:   "--",
+    color: { color: "red" },
+    length: 550,
+             // smooth: false,
+
+    label: "R1,R3",
+   
+  },
+  {
+    from: 2,
+    to: 1,
+    relation: "friend",
+    arrows: "--",
+    color: { color: "red" },
+    length: 550,
+         // smooth: false,
+
+    label: "R2,R4",
+
+
+  },
+ 
+]);
+
+/**
+ * filter values are updated in the outer scope.
+ * in order to apply filters to new values, DataView.refresh() should be called
+ */
+let nodeFilterValue = "";
+const edgesFilterValues = {
+  friend: true,
+  teacher: true,
+  parent: true,
+};
+
+/*
+      filter function should return true or false
+      based on whether item in DataView satisfies a given condition.
+    */
+const nodesFilter = (node) => {
+  if (nodeFilterValue === "") {
+    return true;
+  }
+  switch (nodeFilterValue) {
+   
+    default:
+      return true;
+  }
+};
+
+const edgesFilter = (edge) => {
+  return edgesFilterValues[edge.relation];
+};
+
+const nodesView = new vis.DataView(nodes, { filter: nodesFilter });
+const edgesView = new vis.DataView(edges, { filter: edgesFilter });
+
+
+
+startNetwork({ nodes: nodesView, edges: edgesView });
+
+</script>
+
+
+
+
+<style type="text/css">
+  #mynetwork {
+  width:400px;
+  height: 300px;
+  border: 1px solid lightgray;
+    margin: auto;
+
+}
+
+
+
+</style>
+
+
+  {% endblock %}
