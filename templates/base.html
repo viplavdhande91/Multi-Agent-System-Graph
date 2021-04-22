@@ -1,0 +1,100 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+
+  <title>MAS (ver 1.2)</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+   <a class="navbar-brand" href="{% url 'index' %}">Home</a> 
+     <a class="navbar-brand" href="{% url 'index' %}">STUDENT INFO SYSTEM</a> 
+   <a class="navbar-brand" href="{% url 'index' %}">RAILWAYSINFO SYSTEM</a> 
+   <a class="navbar-brand" href="{% url 'index' %}">MEDICAL INFO SYSTEM</a> 
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+     
+    <!-- 
+      <li class="nav-item">
+        <a class="nav-link" href="#">Figure 3</a>
+      </li>
+    -->
+    </ul>
+  </div>  
+</nav>
+<br>
+
+<div class="container">
+
+ <h1><center>Student Information System</center> </h1>
+    <p><center>Graph Generation of Student Information System</center> </p>
+
+
+
+
+
+
+
+<body class="hm-gradient">
+    
+    <main>
+        
+        <div class="container text-center mt-4">
+       
+             
+          
+            <hr class="my-4">
+          
+            <div class="text-center darken-grey-text mb-4">
+                <h3 class="font-bold mb-3">Click here to Generate corresponding Graph of S.I.S</h3>
+                
+
+                <a class="btn btn-danger" href="{% url 'student_graph' %}" target="_blank">MASAG</a>
+
+                <a class="btn btn-danger" href="#" target="_blank">Colloboration 1</a>
+
+
+                <a class="btn btn-danger" href="#" target="_blank">Colloboration 2</a>
+
+            </div>
+
+        </div>
+      
+    </main>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>
+  
+</body>
+
+
+
+</div>
+
+
+ 
+{% block content %}
+
+
+
+
+
+
+{% endblock %}
+
+</body>
+</html>
+
+

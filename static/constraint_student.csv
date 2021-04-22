@@ -1,0 +1,8 @@
+﻿Agent,Precondition,Event,Postcondition
+StudentAgent(SA),S1:C1,E1,C2:S2
+StudentAgent(SA),S3,E2,C3:S4
+StudentAgent(SA),S5:C4,E3,S6
+CollegeAgent(CA),S7:C5,E4,S9
+CollegeAgent(CA),S8:C7,E4,S9
+CollegeAgent(CA),S10,E5,S11
+CollegeAgent(CA),S12:C6,E6,S13

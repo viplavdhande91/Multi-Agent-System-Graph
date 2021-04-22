@@ -1,0 +1,239 @@
+﻿
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<script src="{% static 'js/vis-network.min.js' %}"></script>-->
+<div id= "demo">
+</div>
+<div id="mynetwork"></div>
+  <h3><center> Fig. 4 The Ex-MASAG of the Student Enrolment </center></h3>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+// create an array with nodes
+nodes = [
+
+
+];
+
+
+
+//create event nodes
+var i = 1;
+
+var number_of_events = {{ number_of_events }};
+
+while (i <= number_of_events) {
+
+var temp =i.toString();
+
+nodes.push({ id: i, label:"E#".replace('#',temp),font: { size: 40 },});
+  i++;
+}
+
+
+
+
+
+
+//create constraint nodes
+var number_of_constraints = {{ number_of_constraints }};
+
+var i = 1;
+
+while(i <= number_of_constraints) {
+
+var temp =i.toString();
+
+nodes.push({ id: number_of_events  +i , label:"C#".replace('#',temp),shape: "diamond",  font: { size: 40 },});
+  i++;
+}
+
+
+
+
+
+//create Agent nodes 
+
+
+
+var agent_names = {{agent_names | safe }}; 
+
+
+var j = 1;
+var k = 0;
+while(j <= {{ number_of_agents }}) {
+
+
+nodes.push({id: number_of_events + number_of_constraints + j, label:agent_names[k]  ,
+    font: { face: "Monospace", align: "left" },
+    shape: "box",
+    font: { size: 50 },
+   //  fixed: true,
+   // physics: false,
+
+  });
+
+  j++;
+  k++;
+
+}
+
+
+  
+
+
+
+
+
+// create an array with edges
+
+
+//var directed_edge = [14, 'S3', 2, 3, 'S6', 15, 4, 'S9', 14, 15, 'S10', 5, 5, 'S11', 14, 6, 'S13', 14]; 
+
+
+var edges = [
+
+];
+
+//for directed edges without dashes and with labels
+
+
+var directed_edge = {{directed_without_dash_edge_data_ids | safe }}; 
+
+var kkk = 0;
+while(kkk < {{ directed_without_dash_edge_len }}  ) {
+
+
+                  //14                    2
+var aa = { from: directed_edge[kkk], to: directed_edge[kkk+2] ,  label: directed_edge[kkk+1], font: { align: "middle" },arrows: "to",
+smooth: false}; 
+
+var myJSON = JSON.stringify(aa);
+ aa = JSON.parse(myJSON);
+////alert(aa.label);
+edges.push(aa);
+
+kkk = kkk+3;
+
+
+
+}
+
+
+
+ 
+
+// for directed_edge_dashed 
+
+
+
+var directed_edge_dashed = {{directed_with_dash_edge_data_ids | safe }}; 
+
+var kkk = 0;
+while(kkk < {{ directed_with_dash_edge_len }}  ) {
+
+
+
+var bb = { from: directed_edge_dashed[kkk], to: directed_edge_dashed[kkk+2], dashes: [5, 5], 
+  label: directed_edge_dashed[kkk+1], font: { align: "middle" },arrows: "to",smooth: false,}; 
+
+var myJSON = JSON.stringify(bb);
+ bb = JSON.parse(myJSON);
+////alert(aa.label);
+edges.push(bb);
+
+kkk = kkk+3;
+
+
+
+}
+
+
+
+
+
+
+//for nondirected_thickred_edge
+
+var thick_red_edge = {{nondirected_thickred_edge_data_ids | safe }}; 
+
+var kkk = 0;
+while(kkk < {{ nondirected_thickred_edge_data_ids_len }}  ) {
+
+
+
+var bb = {from: thick_red_edge[kkk],to: thick_red_edge[kkk+1], length: 50,width: 10,color: "red", smooth: false,};
+ 
+
+var myJSON = JSON.stringify(bb);
+ bb = JSON.parse(myJSON);
+////alert(aa.label);
+edges.push(bb);
+
+kkk = kkk+2;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// create a network
+var container = document.getElementById("mynetwork");
+var data = {
+  nodes: nodes,
+  edges: edges,
+};
+var options = { physics: false };
+var network = new vis.Network(container, data, options);
+
+network.on("click", function (params) {
+  params.event = "[original event]";
+  document.getElementById("eventSpan").innerHTML =
+    "<h2>Click event:</h2>" + JSON.stringify(params, null, 4);
+});
+
+
+</script>
+
+
+
+
+
+
+<style type="text/css">
+  #mynetwork {
+  width:1200px;
+  height: 700px;
+  border: 1px solid lightgray;
+    margin: auto;
+
+}
+
+
+
+</style>
+
+
+  {% endblock %}

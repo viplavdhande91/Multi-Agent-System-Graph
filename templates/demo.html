@@ -1,0 +1,27 @@
+<table border="1" class="dataframe table-bordered"> <thead> <tr style="text-align: right;"> <th></th> <th>Agent</th> <th>Precondition</th> <th>Event</th> <th>Postcondition</th> </tr> </thead> <tbody> <tr> <th>0</th> <td>StudentAgent(SA)</td> <td>S1:C1</td> <td>E1</td> <td>C2:S2</td> </tr> <tr> <th>1</th> <td>StudentAgent(SA)</td> <td>S3</td> <td>E2</td> <td>C3:S4</td> </tr> <tr> <th>2</th> <td>StudentAgent(SA)</td> <td>S5:C4</td> <td>E3</td> <td>S6</td> </tr> <tr> <th>3</th> <td>CollegeAgent(CA)</td> <td>S7:C5</td> <td>E4</td> <td>S9</td> </tr> <tr> <th>4</th> <td>CollegeAgent(CA)</td> <td>S8:C7</td> <td>E4</td> <td>S9</td> </tr> <tr> <th>5</th> <td>CollegeAgent(CA)</td> <td>S10</td> <td>E5</td> <td>S11</td> </tr> <tr> <th>6</th> <td>CollegeAgent(CA)</td> <td>S12:C6</td> <td>E6</td> <td>S13</td> </tr> </tbody> </table>
+
+
+meaningful_list = 
+
+
+['StudentAgent(SA)_S1_C1', 'C1_E1', 'E1_C2', 'C2_S2_CollegeAgent(SA)',
+
+
+ 'StudentAgent(SA)_S3_E2', 'E2_C3', 'C3_S4_CollegeAgent(SA)', 
+
+
+
+ 'StudentAgent(SA)_S5_C4', 'C4_E3', 'E3_S6_CollegeAgent(SA)',
+
+
+
+  'CollegeAgent(SA)_S7_C5', 'C5_E4', 'E4_S9_StudentAgent(SA)', 
+
+
+  'CollegeAgent(SA)_S8_C7', 'C7_E4', 'E4_S9_StudentAgent(SA)', 
+
+
+  'CollegeAgent(SA)_S10_E5', 'E5_S11_StudentAgent(SA)',
+
+
+   'CollegeAgent(SA)_S12_C6', 'C6_E6', 'E6_S13_StudentAgent(SA)']
